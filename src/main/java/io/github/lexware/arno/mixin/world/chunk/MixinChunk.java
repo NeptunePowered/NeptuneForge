@@ -1,0 +1,180 @@
+/*
+ * This file is part of Arno, licensed under the MIT License (MIT).
+ *
+ * Copyright (c) Jamie Mansfield <https://github.com/lexware>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+package io.github.lexware.arno.mixin.world.chunk;
+
+import net.canarymod.api.entity.Entity;
+import net.canarymod.api.world.Biome;
+import net.canarymod.api.world.BiomeType;
+import net.canarymod.api.world.World;
+import net.canarymod.api.world.blocks.TileEntity;
+import net.canarymod.api.world.position.Position;
+import net.minecraft.world.chunk.Chunk;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+
+import java.util.List;
+import java.util.Map;
+
+@Mixin(Chunk.class)
+public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
+    @Shadow
+    private int xPosition;
+    
+    @Shadow
+    private int zPosition;
+    
+    @Shadow
+    private boolean isModified;
+    
+    @Shadow
+    private boolean isTerrainPopulated;
+    
+    @Override
+    public int getX() {
+        return xPosition;
+    }
+
+    @Override
+    public int getZ() {
+        return zPosition;
+    }
+
+    @Override
+    public int getBlockTypeAt(int x, int y, int z) {
+        return 0;
+    }
+
+    @Override
+    public void setBlockTypeAt(int x, int y, int z, int type) {
+
+    }
+
+    @Override
+    public int getBlockDataAt(int x, int y, int z) {
+        return 0;
+    }
+
+    @Override
+    public void setBlockDataAt(int x, int y, int z, int data) {
+
+    }
+
+    @Override
+    public int getMaxHeigth() {
+        return 0;
+    }
+
+    @Override
+    public int getMaxHeight() {
+        return 0;
+    }
+
+    @Override
+    public boolean isLoaded() {
+        return false;
+    }
+
+    @Override
+    public World getDimension() {
+        return null;
+    }
+
+    @Override
+    public BiomeType[] getBiomeData() {
+        return new BiomeType[0];
+    }
+
+    @Override
+    public byte[] getBiomeByteData() {
+        return new byte[0];
+    }
+
+    @Override
+    public void setBiomeData(BiomeType[] data) {
+
+    }
+
+    @Override
+    public void setBiomeData(byte[] data) {
+
+    }
+
+    @Override
+    public Biome getBiome(int x, int z) {
+        return null;
+    }
+
+    @Override
+    public Map<Position, TileEntity> getTileEntityMap() {
+        return null;
+    }
+
+    @Override
+    public boolean hasEntities() {
+        return false;
+    }
+
+    @Override
+    public List<Entity>[] getEntityLists() {
+        return null;
+    }
+
+    @Shadow
+    public abstract int[] getHeightMap();
+
+    @Override
+    public int[] getPrecipitationHeightMap() {
+        return new int[0];
+    }
+
+    @Override
+    public long getLastSaveTime() {
+        return 0;
+    }
+
+    @Override
+    public boolean isTerrainPopulated() {
+        return isTerrainPopulated;
+    }
+
+    @Override
+    public boolean isModified() {
+        return isModified;
+    }
+
+    @Override
+    public void generateSkyLightMap() {
+
+    }
+
+    @Override
+    public void updateSkyLightMap(boolean force) {
+
+    }
+
+    @Override
+    public void relightBlock(int x, int y, int z) {
+
+    }
+}
