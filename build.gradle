@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'forge-repo'
+            url = 'http://files.minecraftforge.net/maven/'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+evaluationDependsOn('Mixin')
+
+apply plugin: 'forge'
+apply plugin: 'maven'
+
+group = 'io.github.lexware'
+archivesBaseName = 'arno'
+
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://repo.visualillusionsent.net/repository/public'
+    }
+}
+
+// Minecraft Forge version
+minecraft {
+    version = "1.8-11.14.1.1306"
+}
+
+dependencies {
+    compile 'net.canarymod:canarylib:1.2.0-SNAPSHOT'
+
+    compile project('Mixin')
+}
