@@ -34,7 +34,7 @@ minecraft {
 }
 
 dependencies {
-    compile 'net.canarymod:canarylib:1.2.0-SNAPSHOT'
+    compile 'net.canarymod:CanaryLib:1.2.0-SNAPSHOT'
 
     compile project('Mixin')
 }

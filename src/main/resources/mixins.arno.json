@@ -1,6 +1,6 @@
 {
   "package": "io.github.lexware.arno.mixin",
   "mixins": [
-
+    "server.MixinMinecraftServer"
   ]
 }
