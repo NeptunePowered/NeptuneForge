@@ -1,6 +1,8 @@
 {
   "package": "io.github.lexware.arno.mixin",
   "mixins": [
+    "server.management.MixinPlayerManager",
+    "server.management.MixinServerConfigurationManager",
     "server.MixinMinecraftServer",
     "world.chunk.MixinChunk"
   ]

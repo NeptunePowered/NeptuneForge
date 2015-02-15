@@ -50,6 +50,18 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
     @Shadow
     private boolean isTerrainPopulated;
     
+    @Shadow
+    private boolean hasEntities;
+    
+    @Shadow
+    private long lastSaveTime;
+    
+    @Shadow
+    private int[] precipitationHeightMap;
+
+    @Shadow
+    public abstract void generateSkylightMap();
+    
     @Override
     public int getX() {
         return xPosition;
@@ -132,7 +144,7 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
 
     @Override
     public boolean hasEntities() {
-        return false;
+        return hasEntities;
     }
 
     @Override
@@ -145,12 +157,12 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
 
     @Override
     public int[] getPrecipitationHeightMap() {
-        return new int[0];
+        return precipitationHeightMap;
     }
 
     @Override
     public long getLastSaveTime() {
-        return 0;
+        return lastSaveTime;
     }
 
     @Override
@@ -165,7 +177,7 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
 
     @Override
     public void generateSkyLightMap() {
-
+        generateSkylightMap();
     }
 
     @Override

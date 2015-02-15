@@ -57,6 +57,9 @@ public abstract class MixinMinecraftServer implements Server {
 
     @Shadow
     private boolean serverRunning;
+    
+    @Shadow
+    public long[] tickTimeArray;
 
     @Shadow
     private ServerConfigurationManager serverConfigManager;
@@ -203,7 +206,7 @@ public abstract class MixinMinecraftServer implements Server {
 
     @Override
     public ConfigurationManager getConfigurationManager() {
-        return null;
+        return (ConfigurationManager) serverConfigManager;
     }
 
     @Override
@@ -258,7 +261,7 @@ public abstract class MixinMinecraftServer implements Server {
 
     @Override
     public long[] getTickTimeArray() {
-        return new long[0];
+        return tickTimeArray;
     }
 
     @Override
