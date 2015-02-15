@@ -1,6 +1,18 @@
 {
   "package": "io.github.lexware.arno.mixin",
   "mixins": [
+    "nbt.MixinNBTBase",
+    "nbt.MixinNBTPrimitive",
+    "nbt.MixinNBTTagByte",
+    "nbt.MixinNBTTagByteArray",
+    "nbt.MixinNBTTagCompound",
+    "nbt.MixinNBTTagDouble",
+    "nbt.MixinNBTTagFloat",
+    "nbt.MixinNBTTagInt",
+    "nbt.MixinNBTTagIntArray",
+    "nbt.MixinNBTTagLong",
+    "nbt.MixinNBTTagShort",
+    "nbt.MixinNBTTagString",
     "server.management.MixinPlayerManager",
     "server.management.MixinServerConfigurationManager",
     "server.MixinMinecraftServer",
