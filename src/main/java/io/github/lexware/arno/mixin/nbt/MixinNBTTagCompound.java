@@ -34,6 +34,7 @@ import org.spongepowered.asm.mixin.Interface;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -87,7 +88,11 @@ public abstract class MixinNBTTagCompound extends NBTBase {
     public abstract NBTTagCompound getCompoundTag(String key);
     
     public Collection<BaseTag> tag$values() {
-        return null;
+        Collection<BaseTag> values = new ArrayList<BaseTag>();
+        for (NBTBase tag : (Collection<NBTBase>) tagMap) {
+            values.add((BaseTag) tag);
+        }
+        return values;
     }
 
     public Set<String> tag$keySet() {
@@ -135,7 +140,7 @@ public abstract class MixinNBTTagCompound extends NBTBase {
     }
 
     public void tag$put(String key, CompoundTag value) {
-
+        setTag(key, (NBTTagCompound) value);
     }
 
     public void tag$put(String key, boolean value) {

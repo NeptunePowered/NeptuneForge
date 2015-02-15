@@ -16,6 +16,8 @@
     "server.management.MixinPlayerManager",
     "server.management.MixinServerConfigurationManager",
     "server.MixinMinecraftServer",
+    "stats.MixinAchievement",
+    "stats.MixinStatBase",
     "world.chunk.MixinChunk"
   ]
 }
