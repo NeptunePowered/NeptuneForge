@@ -46,6 +46,9 @@ public abstract class MixinNBTTagCompound extends NBTBase {
     private Map tagMap;
     
     @Shadow
+    public abstract int getInteger(String key);
+    
+    @Shadow
     public abstract void setTag(String key, NBTBase value);
     
     @Shadow
@@ -165,8 +168,9 @@ public abstract class MixinNBTTagCompound extends NBTBase {
     @Shadow(prefix = "tag$")
     public abstract short tag$getShort(String key);
 
-    @Shadow(prefix = "tag$")
-    public abstract int tag$getInt(String key);
+    public int tag$getInt(String key) {
+        return getInteger(key);
+    }
 
     @Shadow(prefix = "tag$")
     public abstract long tag$getLong(String key);

@@ -24,27 +24,9 @@
 package io.github.lexware.arno;
 
 import net.canarymod.Canary;
-import net.canarymod.api.Server;
-import net.minecraftforge.fml.common.DummyModContainer;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.ModMetadata;
 
-public class ArnoMod extends DummyModContainer {
-    public ArnoMod() {
-        super(new ModMetadata());
-        this.getMetadata().name = "Arno";
-        this.getMetadata().modId = "Arno";
-        
-        initArno();
-        Canary.setServer((Server) FMLCommonHandler.instance().getMinecraftServerInstance());
-    }
-    
-    private void initArno() {
-        new Arno();
-    }
-    
-    @Override
-    public Object getMod() {
-        return this;
+public class Arno extends Canary {
+    public Arno() {
+        Canary.setCanary(this);
     }
 }

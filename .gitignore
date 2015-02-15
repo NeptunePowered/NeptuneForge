@@ -134,3 +134,7 @@ Temporary Items
 *.un~
 Session.vim
 .netrwhist
+
+# Arno
+run
+gradle

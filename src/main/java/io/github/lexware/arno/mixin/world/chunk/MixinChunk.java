@@ -58,6 +58,9 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
     
     @Shadow
     private int[] precipitationHeightMap;
+    
+    @Shadow
+    private byte[] blockBiomeArray;
 
     @Shadow
     public abstract void generateSkylightMap();
@@ -102,10 +105,8 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
         return 0;
     }
 
-    @Override
-    public boolean isLoaded() {
-        return false;
-    }
+    @Shadow
+    public abstract boolean isLoaded();
 
     @Override
     public World getDimension() {
@@ -119,17 +120,17 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
 
     @Override
     public byte[] getBiomeByteData() {
-        return new byte[0];
+        return blockBiomeArray;
     }
 
     @Override
     public void setBiomeData(BiomeType[] data) {
-
+        
     }
 
     @Override
     public void setBiomeData(byte[] data) {
-
+        blockBiomeArray = data;
     }
 
     @Override
@@ -137,10 +138,8 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
         return null;
     }
 
-    @Override
-    public Map<Position, TileEntity> getTileEntityMap() {
-        return null;
-    }
+    @Shadow
+    public abstract Map<Position, TileEntity> getTileEntityMap();
 
     @Override
     public boolean hasEntities() {
@@ -185,8 +184,6 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
 
     }
 
-    @Override
-    public void relightBlock(int x, int y, int z) {
-
-    }
+    @Shadow
+    public abstract void relightBlock(int x, int y, int z);
 }

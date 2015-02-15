@@ -23,7 +23,6 @@
  */
 package io.github.lexware.arno.mixin.server;
 
-import net.canarymod.Canary;
 import net.canarymod.api.*;
 import net.canarymod.api.chat.ChatComponent;
 import net.canarymod.api.entity.living.humanoid.Player;
@@ -43,9 +42,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 import java.util.UUID;
@@ -67,11 +63,6 @@ public abstract class MixinMinecraftServer implements Server {
 
     @Shadow
     private ServerConfigurationManager serverConfigManager;
-
-    @Inject(method = "<init>", at = @At("RETURN"))
-    private void onConstructed(CallbackInfo ci) {
-        Canary.setServer(this);
-    }
     
     @Override
     public String getHostname() {
