@@ -1,6 +1,7 @@
 {
   "package": "io.github.lexware.arno.mixin",
   "mixins": [
+    "entity.MixinEntityTracker",
     "nbt.MixinNBTBase",
     "nbt.MixinNBTPrimitive",
     "nbt.MixinNBTTagByte",
@@ -18,6 +19,7 @@
     "server.MixinMinecraftServer",
     "stats.MixinAchievement",
     "stats.MixinStatBase",
-    "world.chunk.MixinChunk"
+    "world.chunk.MixinChunk",
+    "world.MixinWorldServer"
   ]
 }
