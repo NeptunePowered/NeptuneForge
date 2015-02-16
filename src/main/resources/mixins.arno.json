@@ -19,6 +19,7 @@
     "server.MixinMinecraftServer",
     "stats.MixinAchievement",
     "stats.MixinStatBase",
+    "world.biome.MixinBiomeGenBase",
     "world.chunk.MixinChunk",
     "world.MixinWorldServer"
   ]

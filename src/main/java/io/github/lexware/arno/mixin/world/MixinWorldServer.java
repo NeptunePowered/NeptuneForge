@@ -49,6 +49,7 @@ import net.canarymod.api.world.effects.SoundEffect;
 import net.canarymod.api.world.position.Location;
 import net.canarymod.api.world.position.Position;
 import net.minecraft.profiler.Profiler;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.*;
 import net.minecraft.world.storage.ISaveHandler;
 import net.minecraft.world.storage.WorldInfo;
@@ -254,11 +255,11 @@ public abstract class MixinWorldServer extends net.minecraft.world.World {
     }
     
     public BiomeType world$getBiomeType(int x, int z) {
-        return null;
+        return world$getBiome(x, z).getBiomeType();
     }
     
     public Biome world$getBiome(int x, int z) {
-        return null;
+        return (Biome) getBiomeGenForCoords(new BlockPos(x, 0, z));
     }
     
     public void world$setBiome(int x, int z, BiomeType biome) {
@@ -266,7 +267,7 @@ public abstract class MixinWorldServer extends net.minecraft.world.World {
     }
     
     public int world$getHeight() {
-        return 0;
+        return getHeight();
     }
     
     public int world$getHighestBlockAt(int x, int z) {
@@ -278,7 +279,7 @@ public abstract class MixinWorldServer extends net.minecraft.world.World {
     }
     
     public void world$setTime(long time) {
-
+        setWorldTime(time);
     }
     
     public long world$getRelativeTime() {
@@ -322,7 +323,7 @@ public abstract class MixinWorldServer extends net.minecraft.world.World {
     }
     
     public String world$getName() {
-        return null;
+        return worldInfo.getWorldName();
     }
     
     public String world$getFqName() {
@@ -370,11 +371,7 @@ public abstract class MixinWorldServer extends net.minecraft.world.World {
     }
     
     public void world$setThundering(boolean thundering) {
-
-    }
-    
-    public void world$setThunderStrength(float strength) {
-
+        worldInfo.setThundering(thundering);
     }
     
     public float world$getThunderStrength() {
@@ -382,15 +379,11 @@ public abstract class MixinWorldServer extends net.minecraft.world.World {
     }
     
     public void world$setThunderTime(int ticks) {
-
+        worldInfo.setThunderTime(ticks);
     }
     
     public void world$setRaining(boolean downfall) {
-
-    }
-    
-    public void world$setRainStrength(float strength) {
-
+        worldInfo.setRaining(downfall);
     }
     
     public float world$getRainStrength() {
@@ -398,15 +391,7 @@ public abstract class MixinWorldServer extends net.minecraft.world.World {
     }
     
     public void world$setRainTime(int ticks) {
-
-    }
-    
-    public boolean world$isRaining() {
-        return false;
-    }
-    
-    public boolean world$isThundering() {
-        return false;
+        worldInfo.setRainTime(ticks);
     }
     
     public void world$makeLightningBolt(int x, int y, int z) {
@@ -426,15 +411,15 @@ public abstract class MixinWorldServer extends net.minecraft.world.World {
     }
     
     public int world$getRainTicks() {
-        return 0;
+        return worldInfo.getRainTime();
     }
     
     public int world$getThunderTicks() {
-        return 0;
+        return worldInfo.getThunderTime();
     }
     
     public long world$getWorldSeed() {
-        return 0;
+        return worldInfo.getSeed();
     }
     
     public void world$removePlayerFromWorld(Player player) {
