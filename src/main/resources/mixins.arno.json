@@ -1,5 +1,5 @@
 {
-  "package": "io.github.lexware.arno.mixin",
+  "package": "uk.jamierocks.arno.mixin",
   "mixins": [
     "entity.MixinEntityTracker",
     "nbt.MixinNBTBase",
