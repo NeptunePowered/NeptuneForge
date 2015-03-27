@@ -35,6 +35,7 @@ import net.canarymod.api.world.WorldManager;
 import net.canarymod.chat.MessageReceiver;
 import net.canarymod.chat.ReceiverType;
 import net.canarymod.exceptions.InvalidInstanceException;
+import net.canarymod.logger.Logman;
 import net.canarymod.tasks.ServerTask;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
@@ -43,8 +44,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+import java.awt.GraphicsEnvironment;
 import java.util.List;
 import java.util.UUID;
+
+import static net.canarymod.Canary.log;
 
 @Mixin(MinecraftServer.class)
 public abstract class MixinMinecraftServer implements Server {
@@ -291,7 +295,7 @@ public abstract class MixinMinecraftServer implements Server {
 
     @Override
     public boolean isHeadless() {
-        return false;
+        return GraphicsEnvironment.isHeadless();
     }
 
     @Override
@@ -336,52 +340,62 @@ public abstract class MixinMinecraftServer implements Server {
 
     @Override
     public String getName() {
-        return null;
+        return "Console";
     }
 
     @Override
     public void notice(String message) {
-
+        log.info(Logman.NOTICE, message);
     }
 
     @Override
     public void notice(CharSequence message) {
-
+        log.info(Logman.NOTICE, message);
     }
 
     @Override
     public void notice(CharSequence... messages) {
-
+        for (CharSequence message : messages) {
+            notice(message);
+        }
     }
 
     @Override
     public void notice(Iterable<? extends CharSequence> messages) {
-
-    }
-
-    @Override
-    public void message(String message) {
-
+        for (CharSequence message : messages) {
+            notice(message);
+        }
     }
 
     @Override
     public void message(CharSequence message) {
+        log.info(Logman.MESSAGE, message);
+    }
 
+    @Override
+    public void message(String message) {
+        log.info(Logman.MESSAGE, message);
     }
 
     @Override
     public void message(CharSequence... messages) {
-
+        for (CharSequence message : messages) {
+            message(message);
+        }
     }
 
     @Override
     public void message(Iterable<? extends CharSequence> messages) {
-
+        for (CharSequence message : messages) {
+            message(message);
+        }
     }
 
     @Override
     public void message(ChatComponent... chatComponents) {
-
+        for(ChatComponent chatComponent : chatComponents){
+            log.info(Logman.MESSAGE, chatComponent.getFullText());
+        }
     }
 
     @Override

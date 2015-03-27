@@ -29,12 +29,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(StatBase.class)
-public class MixinStatBase implements Stat {
+public abstract class MixinStatBase implements Stat {
     @Shadow
     public String statId;
     
     @Shadow
     public boolean isIndependent;
+    
+    @Shadow(prefix = "base$")
+    public abstract String base$toString();
     
     @Override
     public String getId() {
@@ -43,7 +46,7 @@ public class MixinStatBase implements Stat {
 
     @Override
     public String getName() {
-        return null;
+        return base$toString();
     }
 
     @Override
