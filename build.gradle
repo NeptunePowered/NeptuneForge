@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
         maven {
             name = 'forge-repo'
             url = 'http://files.minecraftforge.net/maven/'
@@ -8,41 +9,11 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.1'
     }
 }
-evaluationDependsOn('Common')
-
 apply plugin: 'forge'
 
-group = 'uk.jamierocks'
-archivesBaseName = 'arno'
+ext.forgeVersion = '11.14.1.1334'
 
-sourceCompatibility = '1.6'
-targetCompatibility = '1.6'
-
-repositories {
-    mavenCentral()
-    maven {
-        url 'http://repo.visualillusionsent.net/repository/public'
-    }
-    maven {
-        url 'http://repo.spongepowered.org/maven'
-    }
-}
-
-// Minecraft Forge version
-minecraft {
-    version = '1.8-11.14.1.1334'
-    mappings = 'snapshot_20150326'
-}
-
-dependencies {
-    compile 'net.canarymod:CanaryLib:1.2.0-SNAPSHOT'
-    compile 'org.spongepowered:mixin:0.1-SNAPSHOT'
-
-    compile project('Common')
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
-}
+apply from: project(':Common').file('gradle/implementation.gradle')
