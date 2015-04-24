@@ -36,12 +36,13 @@ import java.util.List;
 
 @Mixin(ServerConfigurationManager.class)
 public abstract class MixinServerConfigurationManager implements ConfigurationManager {
+
     @Shadow
     public abstract int getCurrentPlayerCount();
-    
+
     @Override
     public void sendPacketToAllInWorld(String world, Packet packet) {
-        
+
     }
 
     @Override

@@ -23,7 +23,15 @@
  */
 package uk.jamierocks.arno.mixin.server;
 
-import net.canarymod.api.*;
+import static net.canarymod.Canary.log;
+
+import net.canarymod.api.CommandBlockLogic;
+import net.canarymod.api.ConfigurationManager;
+import net.canarymod.api.OfflinePlayer;
+import net.canarymod.api.PlayerListData;
+import net.canarymod.api.PlayerListEntry;
+import net.canarymod.api.PlayerReference;
+import net.canarymod.api.Server;
 import net.canarymod.api.chat.ChatComponent;
 import net.canarymod.api.entity.living.humanoid.Player;
 import net.canarymod.api.gui.GUIControl;
@@ -48,10 +56,9 @@ import java.awt.GraphicsEnvironment;
 import java.util.List;
 import java.util.UUID;
 
-import static net.canarymod.Canary.log;
-
 @Mixin(MinecraftServer.class)
 public abstract class MixinMinecraftServer implements Server {
+
     @Shadow
     @SideOnly(Side.SERVER)
     public String hostname;
@@ -61,13 +68,13 @@ public abstract class MixinMinecraftServer implements Server {
 
     @Shadow
     private boolean serverRunning;
-    
+
     @Shadow
     public long[] tickTimeArray;
 
     @Shadow
     private ServerConfigurationManager serverConfigManager;
-    
+
     @Override
     public String getHostname() {
         return hostname;
@@ -393,7 +400,7 @@ public abstract class MixinMinecraftServer implements Server {
 
     @Override
     public void message(ChatComponent... chatComponents) {
-        for(ChatComponent chatComponent : chatComponents){
+        for (ChatComponent chatComponent : chatComponents) {
             log.info(Logman.MESSAGE, chatComponent.getFullText());
         }
     }

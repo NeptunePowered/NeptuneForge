@@ -35,36 +35,37 @@ import java.util.Random;
 
 @Mixin(BiomeGenBase.class)
 public abstract class MixinBiomeGenBase implements Biome {
+
     @Shadow
     public float temperature;
-    
+
     @Shadow
     protected boolean enableSnow;
-    
+
     @Shadow
     protected boolean enableRain;
-    
+
     @Shadow
     public int biomeID;
-    
+
     @Shadow
     public abstract void func_180624_a(net.minecraft.world.World worldIn, Random p_180624_2_, BlockPos p_180624_3_);
-    
+
     @Shadow
     public abstract boolean canSpawnLightningBolt();
-    
+
     @Shadow
     public abstract float getSpawningChance();
-    
+
     @Shadow
     public abstract int getIntRainfall();
-    
+
     @Shadow
     public abstract BiomeGenBase setTemperatureRainfall(float p_76732_1_, float p_76732_2_);
-    
+
     @Shadow
     public abstract BiomeGenBase setColor(int p_76739_1_);
-    
+
     @Override
     public boolean canSpawnLightning() {
         return canSpawnLightningBolt();

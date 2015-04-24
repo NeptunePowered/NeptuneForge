@@ -34,15 +34,16 @@ import java.util.List;
 
 @Mixin(PlayerManager.class)
 public abstract class MixinPlayerManager implements net.canarymod.api.PlayerManager {
+
     @Shadow
     private int playerViewRadius;
-    
+
     @Shadow
     public abstract void func_180244_a(BlockPos p_180244_1_);
-    
+
     @Override
     public void updateMountedMovingPlayer(Player player) {
-        
+
     }
 
     @Override

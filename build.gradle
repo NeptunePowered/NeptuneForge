@@ -10,10 +10,9 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
-evaluationDependsOn('Mixin')
+evaluationDependsOn('Common')
 
 apply plugin: 'forge'
-apply plugin: 'maven'
 
 group = 'uk.jamierocks'
 archivesBaseName = 'arno'
@@ -26,15 +25,24 @@ repositories {
     maven {
         url 'http://repo.visualillusionsent.net/repository/public'
     }
+    maven {
+        url 'http://repo.spongepowered.org/maven'
+    }
 }
 
 // Minecraft Forge version
 minecraft {
-    version = "1.8-11.14.1.1306"
+    version = '1.8-11.14.1.1334'
+    mappings = 'snapshot_20150326'
 }
 
 dependencies {
     compile 'net.canarymod:CanaryLib:1.2.0-SNAPSHOT'
+    compile 'org.spongepowered:mixin:0.1-SNAPSHOT'
 
-    compile project('Mixin')
+    compile project('Common')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
 }

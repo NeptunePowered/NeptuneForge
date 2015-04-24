@@ -28,21 +28,23 @@ import net.canarymod.api.Server;
 import net.minecraftforge.fml.common.DummyModContainer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ModMetadata;
+import uk.jamierocks.neptune.common.Neptune;
 
 public class ArnoMod extends DummyModContainer {
+
     public ArnoMod() {
         super(new ModMetadata());
         this.getMetadata().name = "Arno";
         this.getMetadata().modId = "Arno";
-        
+
         initArno();
         Canary.setServer((Server) FMLCommonHandler.instance().getMinecraftServerInstance());
     }
-    
+
     private void initArno() {
-        new Arno();
+        new Neptune();
     }
-    
+
     @Override
     public Object getMod() {
         return this;

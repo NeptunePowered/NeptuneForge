@@ -38,36 +38,37 @@ import java.util.Map;
 
 @Mixin(Chunk.class)
 public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
+
     @Shadow
     private int xPosition;
-    
+
     @Shadow
     private int zPosition;
-    
+
     @Shadow
     private boolean isModified;
-    
+
     @Shadow
     private boolean isTerrainPopulated;
-    
+
     @Shadow
     private boolean hasEntities;
-    
+
     @Shadow
     private long lastSaveTime;
-    
+
     @Shadow
     private int[] precipitationHeightMap;
-    
+
     @Shadow
     private byte[] blockBiomeArray;
-    
+
     @Shadow
     private net.minecraft.world.World worldObj;
 
     @Shadow
     public abstract void generateSkylightMap();
-    
+
     @Override
     public int getX() {
         return xPosition;
@@ -128,7 +129,7 @@ public abstract class MixinChunk implements net.canarymod.api.world.Chunk {
 
     @Override
     public void setBiomeData(BiomeType[] data) {
-        
+
     }
 
     @Override

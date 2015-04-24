@@ -36,9 +36,10 @@ import java.util.List;
 
 @Mixin(EntityTracker.class)
 public abstract class MixinEntityTracker implements net.canarymod.api.EntityTracker {
+
     @Shadow
     private WorldServer theWorld;
-    
+
     @Override
     public void trackEntity(Entity entity) {
 

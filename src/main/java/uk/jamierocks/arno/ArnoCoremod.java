@@ -30,14 +30,17 @@ import org.spongepowered.asm.mixin.MixinEnvironment;
 import java.util.Map;
 
 public class ArnoCoremod implements IFMLLoadingPlugin {
+
     public ArnoCoremod() {
         MixinBootstrap.init();
-        MixinEnvironment.getCurrentEnvironment().addConfiguration("mixins.arno.json");
+        MixinEnvironment.getCurrentEnvironment()
+                .addConfiguration("mixins.arno.json")
+                .addConfiguration("mixins.common.json");
     }
-    
+
     @Override
     public String[] getASMTransformerClass() {
-        return new String[] {
+        return new String[]{
                 MixinBootstrap.TRANSFORMER_CLASS
         };
     }

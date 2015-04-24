@@ -28,7 +28,8 @@ import net.minecraftforge.fml.common.asm.transformers.AccessTransformer;
 import java.io.IOException;
 
 public class ArnoAccessTransformer extends AccessTransformer {
+
     public ArnoAccessTransformer() throws IOException {
-        super("arno_at.cfg");
+        super("common_at.cfg");
     }
 }
