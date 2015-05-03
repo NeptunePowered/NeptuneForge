@@ -21,32 +21,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package uk.jamierocks.arno;
+package org.neptunepowered.arno;
 
-import net.canarymod.Canary;
-import net.canarymod.api.Server;
-import net.minecraftforge.fml.common.DummyModContainer;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.ModMetadata;
-import uk.jamierocks.neptune.common.Neptune;
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+import org.spongepowered.asm.launch.MixinBootstrap;
+import org.spongepowered.asm.mixin.MixinEnvironment;
 
-public class ArnoMod extends DummyModContainer {
+import java.util.Map;
 
-    public ArnoMod() {
-        super(new ModMetadata());
-        this.getMetadata().name = "Arno";
-        this.getMetadata().modId = "Arno";
+public class ArnoCoremod implements IFMLLoadingPlugin {
 
-        initArno();
-        Canary.setServer((Server) FMLCommonHandler.instance().getMinecraftServerInstance());
-    }
-
-    private void initArno() {
-        new Neptune();
+    public ArnoCoremod() {
+        MixinBootstrap.init();
+        MixinEnvironment.getCurrentEnvironment()
+                .addConfiguration("mixins.arno.json")
+                .addConfiguration("mixins.common.json");
     }
 
     @Override
-    public Object getMod() {
-        return this;
+    public String[] getASMTransformerClass() {
+        return new String[]{
+                MixinBootstrap.TRANSFORMER_CLASS
+        };
+    }
+
+    @Override
+    public String getModContainerClass() {
+        return "org.neptunepowered.arno.ArnoMod";
+    }
+
+    @Override
+    public String getSetupClass() {
+        return null;
+    }
+
+    @Override
+    public void injectData(Map<String, Object> data) {
+
+    }
+
+    @Override
+    public String getAccessTransformerClass() {
+        return "org.neptunepowered.arno.transformers.ArnoAccessTransformer";
     }
 }

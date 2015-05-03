@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package uk.jamierocks.arno.mixin.server.management;
+package org.neptunepowered.arno.mixin.server.management;
 
 import net.canarymod.api.entity.living.humanoid.Player;
 import net.canarymod.api.world.World;

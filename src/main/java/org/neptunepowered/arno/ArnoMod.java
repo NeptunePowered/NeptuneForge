@@ -21,55 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package uk.jamierocks.arno.mixin.server.management;
+package org.neptunepowered.arno;
 
-import net.canarymod.api.ConfigurationManager;
-import net.canarymod.api.entity.living.humanoid.Player;
-import net.canarymod.api.packet.Packet;
-import net.canarymod.api.world.DimensionType;
-import net.canarymod.api.world.World;
-import net.minecraft.server.management.ServerConfigurationManager;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
+import net.canarymod.Canary;
+import net.canarymod.api.Server;
+import net.minecraftforge.fml.common.DummyModContainer;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.ModMetadata;
+import org.neptunepowered.common.Neptune;
 
-import java.util.List;
+public class ArnoMod extends DummyModContainer {
 
-@Mixin(ServerConfigurationManager.class)
-public abstract class MixinServerConfigurationManager implements ConfigurationManager {
+    public ArnoMod() {
+        super(new ModMetadata());
+        this.getMetadata().name = "Arno";
+        this.getMetadata().modId = "Arno";
 
-    @Shadow
-    public abstract int getCurrentPlayerCount();
+        initArno();
+        Canary.setServer((Server) FMLCommonHandler.instance().getMinecraftServerInstance());
+    }
 
-    @Override
-    public void sendPacketToAllInWorld(String world, Packet packet) {
-
+    private void initArno() {
+        new Neptune();
     }
 
     @Override
-    public int getNumPlayersOnline() {
-        return getCurrentPlayerCount();
-    }
-
-    @Override
-    public Player getPlayerByName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<Player> getAllPlayers() {
-        return null;
-    }
-
-    @Shadow
-    public abstract int getMaxPlayers();
-
-    @Override
-    public void markBlockNeedsUpdate(int x, int y, int z, DimensionType dimension, String world) {
-
-    }
-
-    @Override
-    public void switchDimension(Player player, World world, boolean createPortal) {
-
+    public Object getMod() {
+        return this;
     }
 }

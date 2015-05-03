@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package uk.jamierocks.arno.asm.transformers;
+package org.neptunepowered.arno.transformers;
 
 import net.minecraftforge.fml.common.asm.transformers.AccessTransformer;
 

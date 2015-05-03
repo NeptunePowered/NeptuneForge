@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package uk.jamierocks.arno.mixin.server;
+package org.neptunepowered.arno.mixin.server;
 
 import static net.canarymod.Canary.log;
 

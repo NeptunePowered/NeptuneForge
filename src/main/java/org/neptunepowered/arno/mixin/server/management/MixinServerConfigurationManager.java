@@ -21,47 +21,55 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package uk.jamierocks.arno;
+package org.neptunepowered.arno.mixin.server.management;
 
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import org.spongepowered.asm.launch.MixinBootstrap;
-import org.spongepowered.asm.mixin.MixinEnvironment;
+import net.canarymod.api.ConfigurationManager;
+import net.canarymod.api.entity.living.humanoid.Player;
+import net.canarymod.api.packet.Packet;
+import net.canarymod.api.world.DimensionType;
+import net.canarymod.api.world.World;
+import net.minecraft.server.management.ServerConfigurationManager;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 
-import java.util.Map;
+import java.util.List;
 
-public class ArnoCoremod implements IFMLLoadingPlugin {
+@Mixin(ServerConfigurationManager.class)
+public abstract class MixinServerConfigurationManager implements ConfigurationManager {
 
-    public ArnoCoremod() {
-        MixinBootstrap.init();
-        MixinEnvironment.getCurrentEnvironment()
-                .addConfiguration("mixins.arno.json")
-                .addConfiguration("mixins.common.json");
+    @Shadow
+    public abstract int getCurrentPlayerCount();
+
+    @Override
+    public void sendPacketToAllInWorld(String world, Packet packet) {
+
     }
 
     @Override
-    public String[] getASMTransformerClass() {
-        return new String[]{
-                MixinBootstrap.TRANSFORMER_CLASS
-        };
+    public int getNumPlayersOnline() {
+        return getCurrentPlayerCount();
     }
 
     @Override
-    public String getModContainerClass() {
-        return "uk.jamierocks.arno.ArnoMod";
-    }
-
-    @Override
-    public String getSetupClass() {
+    public Player getPlayerByName(String name) {
         return null;
     }
 
     @Override
-    public void injectData(Map<String, Object> data) {
+    public List<Player> getAllPlayers() {
+        return null;
+    }
+
+    @Shadow
+    public abstract int getMaxPlayers();
+
+    @Override
+    public void markBlockNeedsUpdate(int x, int y, int z, DimensionType dimension, String world) {
 
     }
 
     @Override
-    public String getAccessTransformerClass() {
-        return "uk.jamierocks.arno.asm.transformers.ArnoAccessTransformer";
+    public void switchDimension(Player player, World world, boolean createPortal) {
+
     }
 }

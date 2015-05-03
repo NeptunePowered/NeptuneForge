@@ -1,12 +1,10 @@
 {
-  "package": "uk.jamierocks.arno.mixin",
+  "package": "org.neptunepowered.arno.mixin",
   "mixins": [
     "entity.MixinEntityTracker",
     "server.management.MixinPlayerManager",
     "server.management.MixinServerConfigurationManager",
     "server.MixinMinecraftServer",
-    "world.biome.MixinBiomeGenBase",
-    "world.chunk.MixinChunk",
     "world.MixinWorldServer"
   ]
 }
