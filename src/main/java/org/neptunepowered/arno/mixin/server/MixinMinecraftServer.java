@@ -29,7 +29,6 @@ import net.canarymod.api.CommandBlockLogic;
 import net.canarymod.api.ConfigurationManager;
 import net.canarymod.api.OfflinePlayer;
 import net.canarymod.api.PlayerListData;
-import net.canarymod.api.PlayerListEntry;
 import net.canarymod.api.PlayerReference;
 import net.canarymod.api.Server;
 import net.canarymod.api.chat.ChatComponent;
@@ -313,11 +312,6 @@ public abstract class MixinMinecraftServer implements Server {
     @Override
     public boolean removeSynchronousTask(ServerTask task) {
         return false;
-    }
-
-    @Override
-    public void sendPlayerListEntry(PlayerListEntry entry) {
-
     }
 
     @Override

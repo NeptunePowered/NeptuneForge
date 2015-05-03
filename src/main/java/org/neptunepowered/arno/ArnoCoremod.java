@@ -34,8 +34,8 @@ public class ArnoCoremod implements IFMLLoadingPlugin {
     public ArnoCoremod() {
         MixinBootstrap.init();
         MixinEnvironment.getCurrentEnvironment()
-                .addConfiguration("mixins.arno.json")
-                .addConfiguration("mixins.common.json");
+                .addConfiguration("mixins.common.json")
+                .addConfiguration("mixins.arno.json");
     }
 
     @Override

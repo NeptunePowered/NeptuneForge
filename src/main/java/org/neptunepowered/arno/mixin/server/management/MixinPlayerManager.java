@@ -39,7 +39,7 @@ public abstract class MixinPlayerManager implements net.canarymod.api.PlayerMana
     private int playerViewRadius;
 
     @Shadow
-    public abstract void func_180244_a(BlockPos p_180244_1_);
+    public abstract void markBlockForUpdate(BlockPos p_180244_1_);
 
     @Override
     public void updateMountedMovingPlayer(Player player) {
@@ -63,7 +63,7 @@ public abstract class MixinPlayerManager implements net.canarymod.api.PlayerMana
 
     @Override
     public void markBlockNeedsUpdate(int x, int y, int z) {
-        func_180244_a(new BlockPos(x, y, z));
+        markBlockForUpdate(new BlockPos(x, y, z));
     }
 
     @Override
