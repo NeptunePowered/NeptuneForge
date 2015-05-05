@@ -14,8 +14,8 @@ A Forge implementation of CanaryLib, licensed under the [MIT License].
 
 ## Clone
 The following steps will ensure your project is cloned properly.
-    1. `git clone --recursive https://github.com/NeptunePowered/Arno.git`
-    2. `cd Arno`
+  1. `git clone --recursive https://github.com/NeptunePowered/Arno.git`
+  2. `cd Arno`
 
 ## Setup
 __Note:__ If you do not have [Gradle] installed then use ./gradlew for Unix systems or Git Bash and gradlew.bat for Windows systems in place of any 'gradle' command.
@@ -56,8 +56,8 @@ __Client__
 |:-----------------:|:------------------------------------------|
 |    Main class     | GradleStart                               |
 |    VM options     | -Dfml.coreMods.load=org.neptunepowered.arno.ArnoCoremod |
-| Working directory | ./run/client (Included in project)        |
-| Module classpath  | Arno (IntelliJ Only)                    |
+| Working directory | ./run/client                              |
+| Module classpath  | Arno (IntelliJ Only)                      |
 
 __Server__
 
@@ -65,8 +65,8 @@ __Server__
 |:-----------------:|:-----------------------------------|
 |    Main class     | GradleStartServer                  |
 |    VM Options     | -Dfml.coreMods.load=org.neptunepowered.arno.ArnoCoremod |
-| Working directory | ./run/server (Included in project) |
-| Module classpath  | Arno (IntelliJ Only)             |
+| Working directory | ./run/server                       |
+| Module classpath  | Arno (IntelliJ Only)               |
 
 ## Building
 __Note:__ If you do not have [Gradle] installed then use ./gradlew for Unix systems or Git Bash and gradlew.bat for Windows systems in place of any 'gradle' command.

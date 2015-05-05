@@ -3,8 +3,6 @@
   "mixins": [
     "entity.MixinEntityTracker",
     "server.management.MixinPlayerManager",
-    "server.management.MixinServerConfigurationManager",
-    "server.MixinMinecraftServer",
     "world.MixinWorldServer"
   ]
 }

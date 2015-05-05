@@ -40,9 +40,7 @@ public class ArnoCoremod implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
-        return new String[]{
-                MixinBootstrap.TRANSFORMER_CLASS
-        };
+        return null;
     }
 
     @Override
