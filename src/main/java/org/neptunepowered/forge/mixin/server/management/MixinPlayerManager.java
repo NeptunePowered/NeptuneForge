@@ -21,45 +21,58 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.neptunepowered.arno;
+package org.neptunepowered.forge.mixin.server.management;
 
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import org.spongepowered.asm.launch.MixinBootstrap;
-import org.spongepowered.asm.mixin.MixinEnvironment;
+import net.canarymod.api.entity.living.humanoid.Player;
+import net.canarymod.api.world.World;
+import net.minecraft.server.management.PlayerManager;
+import net.minecraft.util.BlockPos;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 
-import java.util.Map;
+import java.util.List;
 
-public class ArnoCoremod implements IFMLLoadingPlugin {
+@Mixin(PlayerManager.class)
+public abstract class MixinPlayerManager implements net.canarymod.api.PlayerManager {
 
-    public ArnoCoremod() {
-        MixinBootstrap.init();
-        MixinEnvironment.getCurrentEnvironment()
-                .addConfiguration("mixins.common.json")
-                .addConfiguration("mixins.arno.json");
+    @Shadow
+    private int playerViewRadius;
+
+    @Shadow
+    public abstract void markBlockForUpdate(BlockPos p_180244_1_);
+
+    @Override
+    public void updateMountedMovingPlayer(Player player) {
+
     }
 
     @Override
-    public String[] getASMTransformerClass() {
+    public void addPlayer(Player player) {
+
+    }
+
+    @Override
+    public void removePlayer(Player player) {
+
+    }
+
+    @Override
+    public List<Player> getManagedPlayers() {
         return null;
     }
 
     @Override
-    public String getModContainerClass() {
-        return "org.neptunepowered.arno.ArnoMod";
+    public void markBlockNeedsUpdate(int x, int y, int z) {
+        markBlockForUpdate(new BlockPos(x, y, z));
     }
 
     @Override
-    public String getSetupClass() {
+    public int getMaxTrackingDistance() {
+        return PlayerManager.getFurthestViewableBlock(playerViewRadius);
+    }
+
+    @Override
+    public World getAttachedDimension() {
         return null;
-    }
-
-    @Override
-    public void injectData(Map<String, Object> data) {
-
-    }
-
-    @Override
-    public String getAccessTransformerClass() {
-        return "org.neptunepowered.arno.transformers.ArnoAccessTransformer";
     }
 }

@@ -21,15 +21,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.neptunepowered.arno.transformers;
+package org.neptunepowered.forge;
 
-import net.minecraftforge.fml.common.asm.transformers.AccessTransformer;
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+import org.spongepowered.asm.launch.MixinBootstrap;
+import org.spongepowered.asm.mixin.MixinEnvironment;
 
-import java.io.IOException;
+import java.util.Map;
 
-public class ArnoAccessTransformer extends AccessTransformer {
+public class ForgeCoremod implements IFMLLoadingPlugin {
 
-    public ArnoAccessTransformer() throws IOException {
-        super("common_at.cfg");
+    public ForgeCoremod() {
+        MixinBootstrap.init();
+        MixinEnvironment.getCurrentEnvironment()
+                .addConfiguration("mixins.common.json")
+                .addConfiguration("mixins.forge.json");
+    }
+
+    @Override
+    public String[] getASMTransformerClass() {
+        return null;
+    }
+
+    @Override
+    public String getModContainerClass() {
+        return "org.neptunepowered.forge.ForgeMod";
+    }
+
+    @Override
+    public String getSetupClass() {
+        return null;
+    }
+
+    @Override
+    public void injectData(Map<String, Object> data) {
+
+    }
+
+    @Override
+    public String getAccessTransformerClass() {
+        return "org.neptunepowered.forge.transformers.ArnoAccessTransformer";
     }
 }

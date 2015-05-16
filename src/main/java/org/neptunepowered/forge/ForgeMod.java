@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.neptunepowered.arno;
+package org.neptunepowered.forge;
 
 import net.canarymod.Canary;
 import net.canarymod.api.Server;
@@ -30,9 +30,9 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ModMetadata;
 import org.neptunepowered.common.Neptune;
 
-public class ArnoMod extends DummyModContainer {
+public class ForgeMod extends DummyModContainer {
 
-    public ArnoMod() {
+    public ForgeMod() {
         super(new ModMetadata());
         this.getMetadata().name = "Arno";
         this.getMetadata().modId = "Arno";

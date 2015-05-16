@@ -21,58 +21,80 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.neptunepowered.arno.mixin.server.management;
+package org.neptunepowered.forge.mixin.entity;
 
+import net.canarymod.api.entity.Entity;
 import net.canarymod.api.entity.living.humanoid.Player;
+import net.canarymod.api.packet.Packet;
 import net.canarymod.api.world.World;
-import net.minecraft.server.management.PlayerManager;
-import net.minecraft.util.BlockPos;
+import net.minecraft.entity.EntityTracker;
+import net.minecraft.world.WorldServer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.List;
 
-@Mixin(PlayerManager.class)
-public abstract class MixinPlayerManager implements net.canarymod.api.PlayerManager {
+@Mixin(EntityTracker.class)
+public abstract class MixinEntityTracker implements net.canarymod.api.EntityTracker {
 
     @Shadow
-    private int playerViewRadius;
+    private WorldServer theWorld;
+
+    @Override
+    public void trackEntity(Entity entity) {
+
+    }
+
+    @Override
+    public void untrackEntity(Entity entity) {
+
+    }
+
+    @Override
+    public void hidePlayer(Player player, Player toHide) {
+
+    }
+
+    @Override
+    public void hidePlayerGlobal(Player toHide) {
+
+    }
+
+    @Override
+    public void showPlayer(Player player, Player toShow) {
+
+    }
+
+    @Override
+    public void showPlayerGlobal(Player toShow) {
+
+    }
+
+    @Override
+    public void untrackPlayerSymmetrics(Player player) {
+
+    }
 
     @Shadow
-    public abstract void markBlockForUpdate(BlockPos p_180244_1_);
-
-    @Override
-    public void updateMountedMovingPlayer(Player player) {
-
-    }
-
-    @Override
-    public void addPlayer(Player player) {
-
-    }
-
-    @Override
-    public void removePlayer(Player player) {
-
-    }
-
-    @Override
-    public List<Player> getManagedPlayers() {
-        return null;
-    }
-
-    @Override
-    public void markBlockNeedsUpdate(int x, int y, int z) {
-        markBlockForUpdate(new BlockPos(x, y, z));
-    }
-
-    @Override
-    public int getMaxTrackingDistance() {
-        return PlayerManager.getFurthestViewableBlock(playerViewRadius);
-    }
+    public abstract void updateTrackedEntities();
 
     @Override
     public World getAttachedDimension() {
+        return (World) theWorld;
+    }
+
+    @Override
+    public void sendPacketToTrackedPlayer(Player player, Packet packet) {
+
+    }
+
+    @Override
+    public List<Entity> getTrackedEntities() {
         return null;
+    }
+
+    @Override
+    public boolean isPlayerHidden(Player player, Player isHidden) {
+        return false;
     }
 }

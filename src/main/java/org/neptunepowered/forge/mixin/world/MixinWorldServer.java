@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.neptunepowered.arno.mixin.world;
+package org.neptunepowered.forge.mixin.world;
 
 import net.canarymod.api.EntityTracker;
 import net.canarymod.api.GameMode;
