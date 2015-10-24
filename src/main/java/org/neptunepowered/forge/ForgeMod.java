@@ -34,8 +34,8 @@ public class ForgeMod extends DummyModContainer {
 
     public ForgeMod() {
         super(new ModMetadata());
-        this.getMetadata().name = "Arno";
-        this.getMetadata().modId = "Arno";
+        this.getMetadata().name = "NeptuneForge";
+        this.getMetadata().modId = "NeptuneForge";
 
         initArno();
         Canary.setServer((Server) FMLCommonHandler.instance().getMinecraftServerInstance());

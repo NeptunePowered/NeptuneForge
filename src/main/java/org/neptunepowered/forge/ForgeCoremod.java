@@ -60,6 +60,6 @@ public class ForgeCoremod implements IFMLLoadingPlugin {
 
     @Override
     public String getAccessTransformerClass() {
-        return "org.neptunepowered.forge.transformers.ArnoAccessTransformer";
+        return "org.neptunepowered.forge.transformers.NeptuneAccessTransformer";
     }
 }

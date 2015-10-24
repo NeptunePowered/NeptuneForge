@@ -13,6 +13,7 @@ buildscript {
     }
 }
 apply plugin: 'forge'
+ext.minecraftPlugin = plugins.getPlugin('forge')
 
 ext.forgeVersion = '11.14.1.1334'
 

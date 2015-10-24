@@ -1,3 +1,4 @@
 rootProject.name = 'NeptuneForge'
 include 'Common'
+include 'Common:CanaryLib'
 
